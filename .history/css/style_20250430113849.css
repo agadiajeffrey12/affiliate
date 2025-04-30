@@ -501,12 +501,12 @@ a:focus {
 .about_section .detail-box a {
   display: inline-block;
   padding: 10px 45px;
-  background-color: black;
+  background-color: #f8842b;
   color: #ffffff;
   border-radius: 5px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border: 1px solid black;
+  border: 1px solid #f8842b;
   margin-top: 15px;
 }
 
@@ -596,7 +596,7 @@ a:focus {
 
 .client_section .box .client_info .client_name h6 {
   margin-bottom: 0;
-  color: black;
+  color: #7335b7;
   font-weight: normal;
   font-size: 15px;
   text-transform: uppercase;
@@ -612,7 +612,7 @@ a:focus {
 
 .client_section .box .detail-box {
   background-color: #ffffff;
-  background-color:#FFCB05;
+  background-color: #7335b7;
   color: #ffffff;
   border-radius: 15px;
   padding: 85px 45px 15px 45px;
@@ -630,7 +630,7 @@ a:focus {
 }
 
 .client_section .carousel-indicators li {
-  background-color: #FFCB05;
+  background-color: #7335b7;
   width: 10px;
   height: 10px;
   border-radius: 100%;
@@ -687,12 +687,12 @@ a:focus {
   font-family: "Poppins", sans-serif;
   display: inline-block;
   padding: 10px 65px;
-  background-color: black;
+  background-color: #7335b7;
   color: #ffffff;
   border-radius: 3px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border: 1px solid black;
+  border: 1px solid #7335b7;
   color: #fff;
   margin-top: 10px;
 }
@@ -719,7 +719,7 @@ a:focus {
 }
 
 .footer_container {
-  background-color: #FFCB05;
+  background-color: #7335b7;
   color: #ffffff;
   border-radius: 350px 0 0 0;
   padding-top: 145px;
@@ -839,12 +839,12 @@ a:focus {
   text-align: center;
   display: inline-block;
   padding: 10px 55px;
-  background-color: black;
+  background-color: #f8842b;
   color: #ffffff;
   border-radius: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border: 1px solid black;
+  border: 1px solid #f8842b;
   margin-top: 15px;
 }
 

@@ -719,7 +719,7 @@ a:focus {
 }
 
 .footer_container {
-  background-color: #FFCB05;
+  background-color: #7335b7;
   color: #ffffff;
   border-radius: 350px 0 0 0;
   padding-top: 145px;
@@ -839,12 +839,12 @@ a:focus {
   text-align: center;
   display: inline-block;
   padding: 10px 55px;
-  background-color: black;
+  background-color: #f8842b;
   color: #ffffff;
   border-radius: 0;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border: 1px solid black;
+  border: 1px solid #f8842b;
   margin-top: 15px;
 }
 
