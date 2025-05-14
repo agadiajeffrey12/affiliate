@@ -9,10 +9,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <!-- Site Metas -->
   <meta name="keywords" content="trading, forex, commodities, stocks, indices" />
-  <meta name="description" content="Trade smarter with Exness - Your global trading partner" />
+  <meta name="description" content="Trade smarter with Digian - Your global trading partner" />
   <meta name="author" content="" />
 
-  <title>Exness Trading</title>
+  <title>Digian Trading</title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -25,9 +25,6 @@
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
 
-  <!-- EmailJS SDK -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-
 </head>
 
 <body>
@@ -39,7 +36,7 @@
         <nav class="navbar navbar-expand-lg custom_nav-container ">
           <a class="navbar-brand" href="index.html">
             <span>
-              Exness Trading
+              Digian Trading
             </span>
           </a>
 
@@ -86,7 +83,7 @@
                       Trade smarter, Not harder: Get started today.
                     </h1>
                     <p>
-                      Access global markets with Exness Trading. Trade commodities, stocks, forex, and indices with our professional platform and exceptional customer service.
+                      Access global markets with Digian Trading. Trade commodities, stocks, forex, and indices with our professional platform and exceptional customer service.
                     </p>
                     <div class="btn-box">
                       <a href="#contact" class="btn1">
@@ -313,7 +310,7 @@
                       <i class="fa fa-quote-left" aria-hidden="true"></i>
                     </div>
                     <p>
-                      "The instant withdrawals and excellent customer service make Exness Trading stand out from other platforms. I've been trading with them for over two years, and the experience has been exceptional."
+                      "The instant withdrawals and excellent customer service make Digian Trading stand out from other platforms. I've been trading with them for over two years, and the experience has been exceptional."
                     </p>
                   </div>
                 </div>
@@ -342,7 +339,7 @@
                       <i class="fa fa-quote-left" aria-hidden="true"></i>
                     </div>
                     <p>
-                      "As a new trader, I was looking for a platform with good customer support. Exness Trading exceeded my expectations with their responsive team and educational resources."
+                      "As a new trader, I was looking for a platform with good customer support. Digian Trading exceeded my expectations with their responsive team and educational resources."
                     </p>
                   </div>
                 </div>
@@ -370,7 +367,7 @@
                 Open Your Trading Account
               </h2>
             </div>
-            <form id="contact-form">
+            <form action="process-form.php" method="POST" id="contact-form">
               <div>
                 <input type="text" name="fullName" id="fullName" placeholder="Full Name" required />
               </div>
@@ -390,6 +387,9 @@
               <div>
                 <textarea name="message" id="message" class="message-box" placeholder="Additional Information"></textarea>
               </div>
+              <div>
+                <input type="hidden" name="formSubmit" value="1">
+              </div>
               <div class="d-flex">
                 <button type="submit" id="submitBtn">
                   SUBMIT
@@ -401,7 +401,7 @@
         </div>
         <div class="col-md-6 col-lg-5">
           <div class="contact_box">
-            <h2>Why Choose Exness Trading?</h2>
+            <h2>Why Choose Digian Trading?</h2>
             <div class="feature-list mt-4">
               <div class="feature-item mb-3">
                 <i class="fa fa-check-circle" aria-hidden="true"></i>
@@ -435,7 +435,7 @@
           <div class="col-md-6 col-lg-3">
             <div class="info_detail">
               <h4>
-                Exness Trading
+                Digian Trading
               </h4>
               <p>
                 Your trusted partner for global trading. Access markets worldwide with our advanced platform and excellent support.
@@ -459,7 +459,7 @@
             <h4>
               Subscribe to Updates
             </h4>
-            <form action="#" id="newsletter-form">
+            <form action="#">
               <input type="email" name="email" placeholder="Enter email" required />
               <button type="submit">
                 Subscribe
@@ -487,7 +487,7 @@
                 <a href="">
                   <i class="fa fa-envelope" aria-hidden="true"></i>
                   <span>
-                    anierobijuliet59@gmail.com
+                    support@digiantrading.com
                   </span>
                 </a>
               </div>
@@ -516,12 +516,58 @@
     <footer class="footer_section">
       <div class="container">
         <p>
-          &copy; <span id="displayYear"></span> All Rights Reserved By Exness Trading
+          &copy; <span id="displayYear"></span> All Rights Reserved By Digian Trading
         </p>
       </div>
     </footer>
     <!-- footer section -->
   </div>
+
+  <!-- JavaScript code to handle form submission -->
+  <script>
+  (function() {
+  // Replace "YOUR_USER_ID" with your actual EmailJS user ID
+  emailjs.init("bCspjIncYpC__nSlj");
+})();
+
+// 3. Add this script to handle form submission
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+  event.preventDefault();
+  
+  const formStatus = document.getElementById('formStatus');
+  const submitBtn = document.getElementById('submitBtn');
+  
+  // Disable button during submission
+  submitBtn.disabled = true;
+  submitBtn.innerHTML = 'Sending...';
+  formStatus.innerHTML = '<div style="color: #0075FF;">Processing your request...</div>';
+  
+  // Prepare template parameters
+  const templateParams = {
+    fullName: document.getElementById('fullName').value,
+    email: document.getElementById('email').value,
+    phone: document.getElementById('phone').value,
+    accountType: document.getElementById('accountType').value,
+    message: document.getElementById('message').value
+  };
+  
+  // Send email using EmailJS
+  // Replace 'YOUR_SERVICE_ID' and 'YOUR_TEMPLATE_ID' with your actual EmailJS service and template IDs
+  emailjs.send('service_havf4ei', 'template_5osc3z1', templateParams)
+    .then(function(response) {
+      console.log('SUCCESS!', response.status, response.text);
+      formStatus.innerHTML = '<div style="color: #00B050;">Thank you for your interest! Our team will contact you shortly.</div>';
+      document.getElementById('contact-form').reset();
+    }, function(error) {
+      console.log('FAILED...', error);
+      formStatus.innerHTML = '<div style="color: #FF3B30;">There was an error submitting your form. Please try again later.</div>';
+    })
+    .finally(function() {
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'SUBMIT';
+    });
+});
+  </script>
 
   <!-- jQery -->
   <script src="js/jquery-3.4.1.min.js"></script>
@@ -531,59 +577,7 @@
   <!-- bootstrap js -->
   <script src="js/bootstrap.js"></script>
   <script src="js/custom.js"></script>
-
-  <!-- JavaScript code to handle form submission -->
-  <script>
-    // Initialize EmailJS with your user ID
-    (function() {
-      emailjs.init("bCspjIncYpC__nSlj");
-    })();
-
-    // Handle main contact form submission
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      const formStatus = document.getElementById('formStatus');
-      const submitBtn = document.getElementById('submitBtn');
-      
-      // Disable button during submission
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = 'Sending...';
-      formStatus.innerHTML = '<div style="color: #0075FF;">Processing your request...</div>';
-      
-      // Prepare template parameters
-      const templateParams = {
-        fullName: document.getElementById('fullName').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value,
-        accountType: document.getElementById('accountType').value,
-        message: document.getElementById('message').value
-      };
-      
-      // Send email using EmailJS
-      emailjs.send('service_havf4ei', 'template_5osc3z1', templateParams)
-        .then(function(response) {
-          console.log('SUCCESS!', response.status, response.text);
-          formStatus.innerHTML = '<div style="color: #00B050;">Thank you for your interest! Our team will contact you shortly.</div>';
-          document.getElementById('contact-form').reset();
-        }, function(error) {
-          console.log('FAILED...', error);
-          formStatus.innerHTML = '<div style="color: #FF3B30;">There was an error submitting your form. Please try again later.</div>';
-        })
-        .finally(function() {
-          submitBtn.disabled = false;
-          submitBtn.innerHTML = 'SUBMIT';
-        });
-    });
-
-    // Handle newsletter form submission (prevent default for now)
-    document.getElementById('newsletter-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      alert('Thank you for subscribing to our newsletter!');
-      this.reset();
-    });
-  </script>
-
-<!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </body>
+
 </html>
